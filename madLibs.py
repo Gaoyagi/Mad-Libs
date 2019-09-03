@@ -3,8 +3,6 @@
 #player plays madlibs with a preset template
 
 import random
-import sys
-from termcolor import colored, cprint
 
 #dictionary that holds all of the users inputs
 # nouns:4, occupation:1, verb:3 adjective:2;    total:10
@@ -16,9 +14,17 @@ libs = {'job': ["occupation"],
 #prompts users to input eitehr a  noun, adjective, verb, or an occupation and then fills in a dictionary accordingly, afterwards it returns the template with all the blanks filled in
 def inserts():
     for words in libs:
+        notValid = True
         for terms in range(len(libs[words])):
-            temp = input("enter a(n) " + libs[words][terms] + ": ")
-            libs[words][terms] = temp
+            while notValid:
+                temp = input("enter a(n) " + libs[words][terms] + ": ")
+                if temp.isalpha() and len(temp) > 0:
+                    libs[words][terms] = temp
+                    notValid = False
+                else:
+                    print("not a proper item")
+            notValid = True
+
 
 def fill_in():
     random.shuffle(libs['noun'])
