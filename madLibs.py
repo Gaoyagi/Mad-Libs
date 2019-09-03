@@ -3,6 +3,8 @@
 #player plays madlibs with a preset template
 
 import random
+import sys
+from termcolor import colored, cprint
 
 #dictionary that holds all of the users inputs
 # nouns:4, occupation:1, verb:3 adjective:2;    total:10
